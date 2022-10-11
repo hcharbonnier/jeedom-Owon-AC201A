@@ -26,8 +26,6 @@ from zhaquirks.const import (
     PROFILE_ID,
 )
 
-#from zhaquirks.sinope import OWON
-
 OWON_MANUFACTURER_CLUSTER_ID = 0xFFAD # decimal = 65453
 
 class OwonManufacturerCluster(CustomCluster):
@@ -69,26 +67,6 @@ class OwonManufacturerCluster(CustomCluster):
             is_manufacturer_specific=True,
             is_reply=False,
         ),
-        0x04: foundation.ZCLCommandDef(
-            "test_write_pairing_code_request",
-            {
-                "pairing_code": t.uint16_t,
-            },
-            is_manufacturer_specific=True,
-            is_reply=False,
-        ),
-        #0x06: foundation.ZCLCommandDef(),
-        #0x07: foundation.ZCLCommandDef(),
-        # 0x10: foundation.ZCLCommandDef(
-        #     "enter_ir_learn_mode",
-        #     {
-        #         "device_type": t.uint8_t,
-        #         "group_num": t.uint8_t,
-        #         "button_num": t.uint8_t,
-        #     },
-        #     is_manufacturer_specific=True,
-        #     is_reply=False,
-        # ),
         0x52: foundation.ZCLCommandDef(
             "one_key_pairing_request",
             {"param1": t.int8s,"param2": t.int8s,"param3": t.enum8},
@@ -110,7 +88,6 @@ class OwonManufacturerCluster(CustomCluster):
             is_manufacturer_specific=True,
             is_reply=False,
         ),
-
         0x02: foundation.ZCLCommandDef(
             "read_ac_status_response",
             {
@@ -127,8 +104,6 @@ class OwonManufacturerCluster(CustomCluster):
             is_manufacturer_specific=True,
             is_reply=False,
         ),
-
-        # 0x02, 0x11, 0x12, 0x14, 0x15, 0x16,0x50,x070
         0x52: foundation.ZCLCommandDef(
             "one_key_pairing_response",
             #{"param1": t.int8s,"param2": t.int8s,"param3": t.enum8},
