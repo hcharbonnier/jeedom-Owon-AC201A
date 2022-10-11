@@ -1,0 +1,178 @@
+{
+  "name": "OWON - THERMOSTAT POUR Climatiseur ZIGBEE (100V-240V)",
+  "ref": "AC201A",
+  "type": "Thermostat",
+  "reset": "Appuyer et rester sur le bouton Reset pendant environ 10s. Le Thermostat affichera alors rst à l'ecran",
+  "pairing": "Faire un reset du thermostat pour le mettre en mode appairage",
+  "remark": " Impossible de définit une IRCode pour le moment",
+  "documentation": "https://casaia.fr/product/controleur-de-climatiseur-zigbee/?attachment_id=2558&download_file=96vhdnm0qr8vj",
+  "buylink": "https://casaia.fr/product/controleur-de-climatiseur-zigbee",
+   "config" : [
+  ],
+
+  "commands": [
+    {
+      "name": "Temperature Locale",
+      "type": "info",
+      "subtype": "numeric",
+      "generic_type": "THERMOSTAT_TEMPERATURE",
+      "unite": "°C",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "logicalId": "1::513::0",
+      "configuration": {
+        "calculValueOffset": "#value# / 100"
+      }
+    },
+    {
+      "name": "Consigne Froid Présence",
+      "type": "info",
+      "subtype": "numeric",
+      "generic_type": "THERMOSTAT_SETPOINT",
+      "unite": "°C",
+      "isVisible": 0,
+      "isHistorized":0,
+      "logicalId": "1::513::17",
+      "configuration": {
+        "calculValueOffset": "#value# / 100"
+      }
+    },
+    {
+      "name": "Thermostat Froid",
+      "type": "action",
+      "subtype": "slider",
+      "generic_type": "THERMOSTAT_SET_SETPOINT",
+      "unite": "°C",
+      "isVisible": 1,
+      "isHistorized": 0,
+          "value" : "Consigne Froid Présence",
+      "logicalId": "attributes::1::in::513::17::#slider#*100",
+      "configuration": {
+         "minValue":"16",
+         "maxValue":"35"
+      },
+       "template" : {
+        "dashboard" : "button",
+        "mobile" : "button"
+      }
+    },
+    {
+      "name": "Consigne Chaud Présence",
+      "type": "info",
+      "subtype": "numeric",
+      "generic_type": "THERMOSTAT_SETPOINT",
+      "unite": "°C",
+      "isVisible": 0,
+      "isHistorized": 1,
+      "logicalId": "1::513::18",
+      "configuration": {
+        "calculValueOffset": "#value# / 100"
+      }
+    },
+      {
+      "name": "Thermostat Chaud",
+      "type": "action",
+      "subtype": "slider",
+      "generic_type": "THERMOSTAT_SET_SETPOINT",
+      "unite": "°C",
+      "isVisible": 1,
+      "isHistorized": 0,
+      "value" : "Consigne Chaud Présence",
+      "logicalId": "attributes::1::in::513::18::#slider#*100",
+      "configuration": {
+         "minValue":"5",
+         "maxValue":"30"
+      },
+       "template" : {
+        "dashboard" : "button",
+        "mobile" : "button"
+      }
+    },
+    {
+      "name": "Consigne Froid Absence",
+      "type": "info",
+      "subtype": "numeric",
+      "generic_type": "THERMOSTAT_SETPOINT",
+      "unite": "°C",
+      "isVisible": 0,
+      "isHistorized": 0,
+      "logicalId": "1::513::19",
+      "configuration": {
+        "calculValueOffset": "#value# / 100"
+      }
+    },
+    {
+      "name": "Mode Thermostat",
+      "type": "info",
+      "subtype": "string",
+      "generic_type": "THERMOSTAT_STATE_NAME",
+      "isVisible": 1,
+      "isHistorized": 0,
+      "logicalId": "1::513::28"
+    },
+    {
+      "name": "Off",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::513::28::0"
+    },
+    {
+      "name": "Auto",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::513::28::1"
+    },
+    {
+      "name": "Chauffage",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::513::28::4"
+    },
+    {
+      "name": "Refroidissement",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::513::28::3"
+    },
+    {
+      "name": "Mode Ventilation",
+      "type": "info",
+      "subtype": "string",
+      "isVisible": 1,
+      "isHistorized": 0,
+      "logicalId": "1::514::0"
+    },
+    {
+      "name": "Low",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::514::0::1"
+    },
+    {
+      "name": "Medium",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::514::0::2"
+    },
+    {
+      "name": "High",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::514::0::3"
+    },
+    {
+      "name": "Auto",
+      "type": "action",
+      "subtype": "other",
+      "isVisible": 1,
+      "logicalId": "attributes::1::in::514::0::5"
+    }
+  ]
+}
