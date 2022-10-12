@@ -18,7 +18,7 @@ $AC201_OBJECT_NAME="[$objet][$equipmt]";
 
 
 // Parse Zigbee devices to get $AC201_OBJECT_NAME MAC address
-$eqLogics = eqLogipluginc::byType($plugin->getId());
+$eqLogics = eqLogic::byType($plugin->getId());
 $devices = array();
 foreach ($eqLogics as $eqLogic) {
     $eqLogicArray = array();
@@ -60,13 +60,13 @@ switch ($cmde) {
         $value=$mode_thermostat[cmd::byString('#'.$AC201_OBJECT_NAME.'[Mode Thermostat]#')->execCmd()];
         $data='{"ieee":"'.$MACADDRESS.'","cmd":[{"endpoint":1,"cluster_type":"in","cluster":65453,"command":"write_ac_status_request","args":[0,1,1,'.$value.'],"await":0}]}';
         break;
-    case "Consigne Chaud Présence":
-        $consigne_chaud_presence=cmd::byString('#'.$AC201_OBJECT_NAME.'[Consigne Chaud Présence]#')->execCmd()*100;
-        $data='{"ieee":"'.$MACADDRESS.'","cmd":[{"endpoint":1,"cluster_type":"in","cluster":65453,"command":"write_ac_status_request","args":[0,1,2,'.$consigne_chaud_presence.'],"await":0}]}';
+    case "Consigne Chaud":
+        $consigne_chaud=cmd::byString('#'.$AC201_OBJECT_NAME.'[Consigne Chaud]#')->execCmd()*100;
+        $data='{"ieee":"'.$MACADDRESS.'","cmd":[{"endpoint":1,"cluster_type":"in","cluster":65453,"command":"write_ac_status_request","args":[0,1,2,'.$consigne_chaud.'],"await":0}]}';
         break;
-    case "Consigne Froid Présence":
-        $consigne_froid_presence=cmd::byString('#'.$AC201_OBJECT_NAME.'[Consigne Froid Présence]#')->execCmd()*100;
-        $data='{"ieee":"'.$MACADDRESS.'","cmd":[{"endpoint":1,"cluster_type":"in","cluster":65453,"command":"write_ac_status_request","args":[0,1,3,'.$consigne_froid_presence.'],"await":0}]}';
+    case "Consigne Froid":
+        $consigne_froid=cmd::byString('#'.$AC201_OBJECT_NAME.'[Consigne Froid]#')->execCmd()*100;
+        $data='{"ieee":"'.$MACADDRESS.'","cmd":[{"endpoint":1,"cluster_type":"in","cluster":65453,"command":"write_ac_status_request","args":[0,1,3,'.$consigne_froid.'],"await":0}]}';
         break;
     case "Mode Ventilation":
         $value=$mode_fan[cmd::byString('#'.$AC201_OBJECT_NAME.'[Mode Ventilation]#')->execCmd()];
